@@ -1,0 +1,32 @@
+name: release
+
+# Push a tag that is EXACTLY the plugin version (no leading "v"), e.g. 0.3.0.
+# Obsidian's community plugin directory requires this.
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install
+      - run: npm run release:check
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "${{ github.ref_name }}" main.js manifest.json styles.css --title "${{ github.ref_name }}" --generate-notes

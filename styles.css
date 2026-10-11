@@ -1,0 +1,51 @@
+.bridge-path {
+  font-family: var(--font-monospace);
+  font-size: var(--font-smaller);
+  word-break: break-all;
+}
+.bridge-status { margin-top: 2px; }
+.bridge-status-ok { color: var(--text-success); }
+.bridge-status-not-found,
+.bridge-status-not-a-vault { color: var(--text-error); }
+.bridge-status-unknown { color: var(--text-muted); }
+.bridge-prompt-input { width: 100%; margin-bottom: var(--size-4-3); }
+.bridge-link {
+  color: var(--link-external-color);
+  text-decoration: var(--link-external-decoration);
+  cursor: pointer;
+}
+.bridge-link:hover {
+  color: var(--link-external-color-hover);
+  text-decoration: var(--link-external-decoration-hover);
+}
+
+/* Bridge search window */
+.bridge-search-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-4-1);
+  padding: var(--size-4-2) var(--size-4-3) 0;
+}
+.bridge-chip {
+  height: auto;
+  padding: var(--size-2-1) var(--size-4-3);
+  border-radius: 999px;
+  box-shadow: none;
+  background: var(--background-modifier-hover);
+  color: var(--text-muted);
+  font-size: var(--font-smaller);
+}
+.bridge-chip.is-on {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+.bridge-search-status {
+  padding: var(--size-4-1) var(--size-4-3);
+  font-size: var(--font-smaller);
+  color: var(--text-muted);
+}
+.bridge-search-status:empty { display: none; }
+.bridge-search-meta {
+  font-size: var(--font-smaller);
+  color: var(--text-muted);
+}

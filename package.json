@@ -1,0 +1,25 @@
+{
+  "name": "vault-connect-bridge",
+  "version": "0.4.0",
+  "description": "Connect separate Obsidian vaults and link between them without merging.",
+  "author": "Ansu Damanta",
+  "main": "main.js",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc --noEmit && node esbuild.config.mjs production",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test \"tests/**/*.test.ts\"",
+    "release:check": "node scripts/check-release.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.25.0",
+    "obsidian": "latest",
+    "typescript": "^5.8.0"
+  }
+}
