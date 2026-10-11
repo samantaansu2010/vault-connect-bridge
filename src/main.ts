@@ -1,4 +1,4 @@
-import { Editor, FileSystemAdapter, MarkdownView, Menu, Notice, Plugin, apiVersion } from "obsidian";
+import { Editor, FileSystemAdapter, MarkdownView, Menu, Notice, Platform, Plugin, apiVersion } from "obsidian";
 import { BridgeError, vaultProblem } from "./core/errors.ts";
 import { buildBridgeLink, escapeLabel, parseBridgeLink } from "./core/linkParser.ts";
 import { navigateBridgeLink } from "./core/navigate.ts";
@@ -30,6 +30,13 @@ const FOLLOW_ANCHORS = false;
 
 const CLICK_LIKE_EVENTS = ["click", "auxclick"] as const;
 const RECORDED_EVENTS = ["pointerdown", "mousedown", "mouseup", "click", "auxclick"] as const;
+
+export function describePlatform(platform: Pick<typeof Platform, "isWindows" | "isMacOS" | "isLinux"> = Platform): string {
+  if (platform.isWindows) return "Windows";
+  if (platform.isMacOS) return "macOS";
+  if (platform.isLinux) return "Linux";
+  return "unknown";
+}
 
 export default class VaultConnectBridgePlugin extends Plugin {
   registry!: ConnectionRegistry;
@@ -267,7 +274,7 @@ export default class VaultConnectBridgePlugin extends Plugin {
       const report = this.diag.report({
         plugin: this.manifest.version,
         "obsidian api": apiVersion,
-        platform: navigator.userAgent,
+        platform: describePlatform(),
         connections: String(this.registry.list().length),
       });
       try {
