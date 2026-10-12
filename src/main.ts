@@ -278,7 +278,7 @@ export default class VaultConnectBridgePlugin extends Plugin {
         connections: String(this.registry.list().length),
       });
       try {
-        await navigator.clipboard.writeText(report);
+        await window.navigator.clipboard.writeText(report);
         new Notice("Diagnostics report copied to the clipboard. Paste it into your reply.", 8000);
       } catch {
         console.info(report);
