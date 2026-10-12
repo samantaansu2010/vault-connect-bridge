@@ -26,7 +26,13 @@ jobs:
       - run: npm test
       - run: npm run typecheck
       - run: npm run build
-      - name: Publish release
+      - name: Publish release if it does not already exist
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create "${{ github.ref_name }}" main.js manifest.json styles.css --title "${{ github.ref_name }}" --generate-notes
+          TAG: ${{ github.ref_name }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists; leaving its assets unchanged."
+          else
+            gh release create "$TAG" main.js manifest.json styles.css --title "$TAG" --generate-notes
+          fi
