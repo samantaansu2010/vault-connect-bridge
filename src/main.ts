@@ -31,8 +31,8 @@ const FOLLOW_ANCHORS = false;
 const CLICK_LIKE_EVENTS = ["click", "auxclick"] as const;
 const RECORDED_EVENTS = ["pointerdown", "mousedown", "mouseup", "click", "auxclick"] as const;
 
-export function describePlatform(platform: Pick<typeof Platform, "isWindows" | "isMacOS" | "isLinux"> = Platform): string {
-  if (platform.isWindows) return "Windows";
+export function describePlatform(platform: Pick<typeof Platform, "isWin" | "isMacOS" | "isLinux"> = Platform): string {
+  if (platform.isWin) return "Windows";
   if (platform.isMacOS) return "macOS";
   if (platform.isLinux) return "Linux";
   return "unknown";
