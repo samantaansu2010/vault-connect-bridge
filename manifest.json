@@ -1,7 +1,7 @@
 {
   "id": "vault-connect-bridge",
   "name": "Vault Connect Bridge",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "minAppVersion": "1.7.2",
   "description": "Link between separate local vaults on this computer without merging them.",
   "author": "Ansu Samanta",

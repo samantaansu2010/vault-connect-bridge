@@ -1,6 +1,6 @@
 {
   "name": "vault-connect-bridge",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Connect separate Obsidian vaults and link between them without merging.",
   "author": "Ansu Samanta",
   "main": "main.js",

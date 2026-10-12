@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.2
+- Release fix: use Obsidian's Platform API for operating-system reporting in diagnostics; scope clipboard access to the active window.
+
+
 
 
 ## 0.0.1
